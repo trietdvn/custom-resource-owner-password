@@ -27,7 +27,8 @@ namespace IdentityServer
                 var authCode = context.Request.Raw["AuthCode"];
                 var phoneNumber = context.Request.Raw["PhoneNumber"];
 
-                user = Config.GetUsers().FirstOrDefault(p => p.Claims.Any(k => k.Type == "AuthCode") && p.Claims.Any(k => k.Type == ClaimTypes.MobilePhone));
+                user = Config.GetUsers().FirstOrDefault(p => p.Claims.Any(k => k.Type == "AuthCode" && k.Value == authCode) 
+                    && p.Claims.Any(k => k.Type == ClaimTypes.MobilePhone && k.Value == phoneNumber));
                 if (user != null)
                     context.Result = new GrantValidationResult(user.SubjectId, OidcConstants.AuthenticationMethods.Password);
             }

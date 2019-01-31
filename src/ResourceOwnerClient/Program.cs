@@ -4,6 +4,7 @@
 using IdentityModel.Client;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -30,12 +31,12 @@ namespace ResourceOwnerClient
             var clientSecret = "secret";
             var tokenClient = new TokenClient(disco.TokenEndpoint, clientId, clientSecret);
 
-            //// get token by phone/authcode
-            //var extra = new Dictionary<string, string> { { "AuthCode", "123456" } , { "PhoneNumber", "0901111111" } };
-            //var tokenClientResponse = await tokenClient.RequestResourceOwnerPasswordAsync("xxx", "xxx", extra: extra);
+            // get token by phone/authcode
+            var extra = new Dictionary<string, string> { { "AuthCode", "1111" }, { "PhoneNumber", "0901111111" } };
+            var tokenClientResponse = await tokenClient.RequestResourceOwnerPasswordAsync("xxx", "xxx", extra: extra);
 
-            // get token by username/password
-            var tokenClientResponse = await tokenClient.RequestResourceOwnerPasswordAsync("alice", "password");
+            //// get token by username/password
+            //var tokenClientResponse = await tokenClient.RequestResourceOwnerPasswordAsync("alice", "password");
 
             if (tokenClientResponse.IsError)
             {
