@@ -1,0 +1,8 @@
+/src/Api/bin
+/src/Api/obj
+/src/IdentityServer/bin
+/src/IdentityServer/obj
+/src/ResourceOwnerClient/bin
+/src/ResourceOwnerClient/obj
+/src/IdentityServer/identityserver4_log.txt
+/.vs
